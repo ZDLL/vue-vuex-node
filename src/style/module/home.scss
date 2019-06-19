@@ -1,0 +1,35 @@
+.home{
+  height: 100%;
+}
+.el-footer,
+.el-header {
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+}
+.el-aside {
+    background-color: #D3DCE6;
+    color: #333;
+    text-align: center;
+    height: 100%;
+    padding: 20px 10px;
+}
+.el-main {
+    background-color: #E9EEF3;
+    color: #333;
+    text-align: center;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.home > .el-container {
+    height: 100%;
+}
+.el-container:nth-child(5) .el-aside,
+.el-container:nth-child(6) .el-aside {
+}
+
+.el-container:nth-child(7) .el-aside {
+}
