@@ -1,0 +1,45 @@
+服务端文件说明
+
+  model 是数据模型
+
+ 
+
+  module 逻辑模块
+
+ 
+
+  router 路由模块
+  
+  log   日志文件
+
+用户端文件说明
+
+  src
+
+    assets //图片
+
+    common //公共的js 
+
+    components //前端组件
+
+    config //前端配置
+
+    store // vuex模块
+
+    style // 样式文件
+
+    views // 前端视图文件
+
+    app.vue //
+
+    main.js // 前端主文件
+
+    router.js //前端了路由
+
+
+ 项目思想模块化开发，由一个模块链接各功能，功能分工。
+
+ 计划开发一个后台的管理系统
+
+ 项目多有不足，大家多多保函
+  

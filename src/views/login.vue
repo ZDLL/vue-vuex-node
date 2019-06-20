@@ -49,6 +49,14 @@ export default {
           name: _this.name,
           pwd: _this.pwd
         })
+        if (this.$store.state.userModule.resData2.data.code == 1) {
+          this.$router.push({ //语法
+            path: '/home', //跳转的路径
+            query: { //路由传递参数
+              id: "123",
+            }
+          })
+        }
       } else if (_this.title == '登录') {
         await _this.$store.dispatch("userModule/asyncGetData", {
           name: _this.name,
@@ -58,7 +66,7 @@ export default {
           this.$router.push({ //语法
             path: '/home', //跳转的路径
             query: { //路由传递参数
-              id: "123",
+              id:this.$store.state.userModule.resData.data.data,
             }
           })
         }

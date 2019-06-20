@@ -1,16 +1,19 @@
-<template lang="html">
+<template>
   <div class="home">
     <el-container>
-      <el-header>Header</el-header>
+
+      <el-header>
+        <Heade></Heade>
+      </el-header>
         <el-container>
           <el-aside width="200px">
-          <div class='aside'>
-            <router-link :to="{ path: '/home/adduser'}" replace>
-                添加用户
+          <div>
+            <router-link :to="{ path: '/home/adduser',query:{'id':token}}" replace class='a-aside'>
+                用户列表
               </router-link>
           </div>
-          <div class='aside'>
-            <router-link :to="{ path: '/home/addlist'}" replace>
+          <div>
+            <router-link :to="{ path: '/home/addlist',query:{'id':token}}" replace class='a-aside'>
               新增列表
             </router-link>
           </div>
@@ -25,17 +28,24 @@
 </template>
 
 <script>
+import Heade from '../components/heade.vue';
+
 export default {
   name: "home",
   props: [],
   data() {
     return {
-
+      token:''
     };
+  },
+  components:{
+    Heade
   },
   computed: {},
   created() {},
-  mounted() {},
+  mounted() {
+    this.token = this.$route.query.id;
+  },
   methods: {},
   watch: {},
   filters: {}

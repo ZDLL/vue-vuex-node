@@ -1,5 +1,11 @@
 .home{
   height: 100%;
+  .a-aside{
+    height: 40px;
+    border-bottom: 1px #eee solid;
+    line-height: 40px;
+    display: block;
+  }
 }
 .el-footer,
 .el-header {

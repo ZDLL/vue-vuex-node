@@ -1,5 +1,10 @@
-let userModel = require("../../model/index.js").userModel.resisModel
-
+let userModel = require("../../model/index.js").userModel.user
+function S4() {
+      return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+  }
+  function guid() {
+      return (S4()+S4()+S4());//+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4()
+  }
 
 let login  = function(req,res){
   let name =  req.body.name;
@@ -26,9 +31,15 @@ let login  = function(req,res){
     if(data){
       res.send({
         code:1,
-        msg:"登录成功"
+        msg:"登录成功",
+        data:data.userToken
       })
     }
   })
+    // var myID = "userId" + guid();
+    // console.log("生成token")
+    // console.log(myID)
 }
-module.exports = login
+module.exports = {
+  login:login
+}

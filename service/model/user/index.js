@@ -24,14 +24,19 @@ nested: {
   stuff: { type: String, lowercase: true, trim: true }
 }
 */
+let i=0;
 let mongoose = require('mongoose');
 let schema = new mongoose.Schema({//以json对象形式定义 Schema（数据模型）
         username:String,//数据类型
         password: "number",
-        createTime:String
+        createTime:String,
+        userToken:String,
+        userId:{ type: Number, default:function(){
+            return i++
+        }}
     });
-let resisModel = mongoose.model('user', schema);//创建一个user的数据模型导出
+let user = mongoose.model('user', schema);//创建一个user的数据模型导出
 
 module.exports ={
-  resisModel
+  user
 }
