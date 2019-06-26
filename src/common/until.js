@@ -1,10 +1,11 @@
-import CryptoJS from 'crypto-js'
+import CryptoJS from 'crypto-js';
+import Moment from 'moment';
 
 function getAesString(data, key, iv) {
-  let key = CryptoJS.enc.Utf8.parse(key);
-  let iv = CryptoJS.enc.Utf8.parse(iv);
-  let encrypted = CryptoJS.AES.encrypt(data, key, {
-    iv: iv,
+  let CryptoKey = CryptoJS.enc.Utf8.parse(key);
+  let CryptoIv = CryptoJS.enc.Utf8.parse(iv);
+  let encrypted = CryptoJS.AES.encrypt(data, CryptoKey, {
+    iv: CryptoIv,
     mode: CryptoJS.mode.CBC,
     padding: CryptoJS.pad.Pkcs7
   });
@@ -12,10 +13,10 @@ function getAesString(data, key, iv) {
 }
 
 function getDAesString(encrypted, key, iv) {
-  let key = CryptoJS.enc.Utf8.parse(key);
-  let iv = CryptoJS.enc.Utf8.parse(iv);
-  let decrypted = CryptoJS.AES.decrypt(encrypted, key, {
-    iv: iv,
+  let CryptKey = CryptoJS.enc.Utf8.parse(key);
+  let CryptoIv = CryptoJS.enc.Utf8.parse(iv);
+  let decrypted = CryptoJS.AES.decrypt(encrypted, CryptKey, {
+    iv: CryptoIv,
     mode: CryptoJS.mode.CBC,
     padding: CryptoJS.pad.Pkcs7
   });
@@ -107,6 +108,14 @@ let axiosFromData = function (obj){
     })
 }
 
+/**
+ *格林时间转换成年月日时分秒
+ */
+
+let greenTimeChange=function (time){
+  Moment.suppressDeprecationWarnings = true;//关闭moment插件的警告
+  return Moment(time).format('YYYY-MM-DD HH:mm:ss')
+}
 
 export default {
   getAES,
@@ -115,5 +124,6 @@ export default {
   getStore,
   removeStore,
   getUrlParams,
-  axiosFromData
+  axiosFromData,
+  greenTimeChange
 }

@@ -7,16 +7,16 @@
       </el-header>
         <el-container>
           <el-aside width="200px">
-          <div>
-            <router-link :to="{ path: '/home/adduser',query:{'id':token}}" replace class='a-aside'>
-                用户列表
+          <div v-if='right.length>0' v-for='(itm,index) in right' :key='index'>
+            <router-link :to="{ path: '/home/'+itm.key+'',query:{'id':token}}" replace class='a-aside'>
+              {{itm.name}}
               </router-link>
           </div>
-          <div>
+          <!-- <div>
             <router-link :to="{ path: '/home/addlist',query:{'id':token}}" replace class='a-aside'>
               新增列表
             </router-link>
-          </div>
+          </div> -->
 
           </el-aside>
           <el-main>
@@ -29,20 +29,27 @@
 
 <script>
 import Heade from '../components/heade.vue';
+import until from '../common/until.js';
 
 export default {
   name: "home",
   props: [],
   data() {
     return {
-      token:''
+      token:'',
+      right:[]
     };
   },
   components:{
     Heade
   },
   computed: {},
-  created() {},
+  created() {
+    let userInfo = JSON.parse(until.getStore("userInfo"))
+    let right = userInfo.right;
+    this.right = right
+
+  },
   mounted() {
     this.token = this.$route.query.id;
   },

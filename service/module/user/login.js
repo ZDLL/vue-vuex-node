@@ -6,6 +6,7 @@ function S4() {
       return (S4()+S4()+S4());//+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4()
   }
 
+let right =  require('../../config/serveConfig.js').right
 let login  = function(req,res){
   let name =  req.body.name;
   let pwd =  req.body.pwd;
@@ -32,7 +33,13 @@ let login  = function(req,res){
       res.send({
         code:1,
         msg:"登录成功",
-        data:data.userToken
+        data:data.userToken,
+        right:right
+      })
+    }else {
+      res.send({
+        code:0,
+        msg:"没有此用户或密码错误"
       })
     }
   })

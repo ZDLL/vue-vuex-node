@@ -7,15 +7,18 @@
         v-model="name"
         clearable>
       </el-input>
+        <!-- <el-input  class="mt30" placeholder="手机号" v-model="phone"></el-input> -->
       <el-input  class="mt30" placeholder="请输入密码" v-model="pwd" show-password></el-input>
       <button class='isOk' @click='ayncIsOK'>确定</button>
-      <el-button  class="mt30 floatleft" @click='login'>登录</el-button>
-      <el-button  class='mt30 floatright' @click='regis'>注册</el-button>
+      <!-- <el-button  class="mt30 floatleft" @click='login'>登录</el-button>
+      <el-button  class='mt30 floatright' @click='regis'>注册</el-button> -->
     </div>
   </div>
 </template>
 
 <script>
+import until from '../common/until.js';
+
 export default {
   name: "login",
   props: [],
@@ -23,6 +26,7 @@ export default {
     return {
       name: '',
       pwd: '',
+      phone:"",
       title: "登录",
       showSore: false,
       resBackData: this.$store.state.userModule.resData
@@ -62,6 +66,10 @@ export default {
           name: _this.name,
           pwd: _this.pwd
         });
+          let userInfo={
+            right:this.$store.state.userModule.resData.data.right
+          }
+          until.setStore("userInfo",userInfo)
         if (this.$store.state.userModule.resData.data.code == 1) {
           this.$router.push({ //语法
             path: '/home', //跳转的路径
@@ -83,7 +91,7 @@ export default {
 <style lang="scss"> //scoped 为了解决样式私有化而存在，不可修改
 @import '../style/common.scss';
 .login {
-    padding-top: 30px;
+    padding-top: 100px;
     h2 {
         font-size: 18px;
         margin-bottom: 20px;
@@ -95,7 +103,7 @@ export default {
         padding: 30px;
         width: 400px;
         height: auto;
-        border: 1px #dcdcdc solid;
+        // border: 1px #dcdcdc solid;
         margin: 1px auto;
         border-radius: 4px;
         overflow: hidden;

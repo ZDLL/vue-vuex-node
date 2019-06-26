@@ -1,0 +1,11 @@
+module.exports={
+  right:[{
+    name:"用户列表",
+    key:"userList",
+    right:true
+  },{
+    name:"管理员列表",
+    key:"managerList",
+    right:true
+  }]
+}

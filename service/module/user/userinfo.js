@@ -31,11 +31,13 @@ let userinfo = function(req,res){
 };
 
 let userList = function(req,res){
-  userModel.find({},function(err,data){
-    console.log("错误")
-    console.log(err)
-    console.log("成功")
-    console.log(data)
+  userModel.find({
+    state:1
+  },null,{
+    sort:{
+      createTime:-1
+    }
+  },function(err,data){
     res.send({
       code:1,
       data:data

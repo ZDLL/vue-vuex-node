@@ -15,8 +15,10 @@ const state = {
   resData2:'',
   userData:{
     name:"",
-    phone:''
+    phone:'',
   },
+  addMang:{},
+  deleteMang:{},
   userList:[]
 }
 // getters
@@ -37,7 +39,12 @@ const actions = {//异步
   },
   async asyncGetUserList(context,data){
     context.commit("getUserList",await getData(api.userList,data))
-
+  },
+  async asyncSetAddMang(context,data){
+    context.commit("setAddMang",await getData(api.addManger,data))
+  },
+  async asyncDeleteMang(context,data){
+    context.commit('deleteMang',await getData(api.deleteManger,data))
   }
 }
 
@@ -55,6 +62,12 @@ const mutations = {//同步
   },
   getUserList(state,data){
     state.userList = data.data.data
+  },
+  setAddMang(state,data){
+    state.addMang =  data.data
+  },
+  deleteMang(state,data){
+    state.deleteMang=data.data
   }
 }
 

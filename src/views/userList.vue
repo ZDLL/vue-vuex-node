@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="add_list">
-    <h2>新增列表</h2>
+    <h2>用户列表</h2>
   </div>
 </template>
 

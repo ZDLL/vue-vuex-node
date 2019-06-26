@@ -20,13 +20,14 @@ export default new Router({
       component: () => import('./views/home.vue'),
       children:[
         {
-          path:'/home/adduser',
-          name:"home_adduser",
-          component:()=>import('./views/adduser.vue')
-        },{
-          path:'/home/addlist',
-          name:"home_addlist",
-          component:()=>import('./views/addlist.vue')
+          path:'/home/userList',
+          name:"home_userList",
+          component:()=>import('./views/userList.vue')
+        },
+        {
+          path:'/home/managerList',
+          name:"home_managerList",
+          component:()=>import('./views/managerList.vue')
         }
       ]
     }

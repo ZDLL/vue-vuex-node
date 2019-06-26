@@ -24,19 +24,29 @@ nested: {
   stuff: { type: String, lowercase: true, trim: true }
 }
 */
-let i=0;
 let mongoose = require('mongoose');
 let schema = new mongoose.Schema({//以json对象形式定义 Schema（数据模型）
         username:String,//数据类型
         password: "number",
         createTime:String,
         userToken:String,
-        userId:{ type: Number, default:function(){
-            return i++
-        }}
+        phone:Number,
+        right:String,
+        state:String,//(1,正常 -1 删除 2 冻结)
+        userId:{ type: Number}
     });
 let user = mongoose.model('user', schema);//创建一个user的数据模型导出
 
+let roleSchema = new mongoose.Schema({
+  username:String,//数据类型
+  password: String,
+  createTime:String,
+  right:String,
+  userToken:String,
+  state:String,//(1,正常 -1 删除 2 冻结)
+})
+let role = mongoose.model("role",roleSchema)
 module.exports ={
-  user
+  user,
+  role
 }

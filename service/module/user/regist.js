@@ -26,12 +26,14 @@ function regist(req, res) {
   }, function(err, data) {
     if (err) {
       res.send({
-        code: 0
+        code: 0,
+        msg:'用户注册失败'
       })
       return;
     }
     res.send({
-      code: 1
+      code: 1,
+      msg:"注册成功"
     })
   })
 
